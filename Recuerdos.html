@@ -1,0 +1,165 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+ 
+   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collage de Fotos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    
+ body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #e1e4e3;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .collage img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Opcional: darle un estilo tipo mosaico */
+    .wide {
+      grid-column: span 2;
+    }
+
+    .tall {
+      grid-row: span 2;
+    }
+
+    @media (max-width: 768px) {
+      .wide, .tall {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: #03010ea2;
+      color: #4444449f;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .section  {
+      display: flex;
+      text-align:left;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      gap: 2rem;
+    }
+    .sectionder{
+      display: flex;
+      text-align: left;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      gap: 2rem;
+    }
+
+    .section:nth-child(even) {
+      flex-direction: row-reverse;
+      background-color: #044d7700;
+    }
+
+    .section:nth-child(odd) {
+      background-color: #ffeef500;
+    }
+
+    .text {
+      flex: 1;
+      font-size: 1.2rem;
+    }
+
+    .image {
+      flex: 1;
+    }
+
+    .image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.712);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #e0ffe700;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html" style="font-family: 'Playfair Display', serif; font-weight: 600;">
+        
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navOpciones" aria-controls="navOpciones" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navOpciones">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="sopa.html">Sopa de letras</a></li>
+          <li class="nav-item"><a class="nav-link" href="Recuerdos.html">Recuerdos</a></li>
+        
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+ 
+ 
+</head>
+<body>
+  <div class="collage">
+    <img src="img/WhatsApp Image 2025-09-27 at 11.56.40 PM (3).jpeg" alt="Foto 1" >
+    <img src="img/WhatsApp Image 2025-09-27 at 11.56.40 PM (8).jpeg" alt="Foto 2">
+    <img src="img/WhatsApp Image 2025-09-27 at 11.56.40 PM.jpeg" alt="Foto 3">
+    <img src="img/WhatsApp Image 2025-09-27 at 11.56.40 PM (4).jpeg" alt="Foto 4">
+    <img src="img/WhatsApp Image 2025-09-27 at 11.56.40 PM (5).jpeg" alt="Foto 5" >
+    <img src="img/WhatsApp Image 2025-09-27 at 11.56.40 PM (6).jpeg" alt="Foto 6">
+    <img src="img/WhatsApp Image 2025-09-27 at 11.56.40 PM (7).jpeg">
+    <img src="img/WhatsApp Image 2025-09-28 at 2.36.10 AM.jpeg"
+    
+  </div>
+</body>
+</html>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
