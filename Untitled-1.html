@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aprendizaje y Memoria — Presentación</title>
+
+<!-- Estilos -->
+<style>
+  :root{
+    --bg:#f6fbff;
+    --card:#ffffff;
+    --accent:#2980b9;
+    --dark:#2c3e50;
+    --muted:#7f8c8d;
+    --shadow: 0 10px 30px rgba(44,62,80,0.12);
+    --radius:18px;
+    --pad:36px;
+    --maxw:1100px;
+    --g1: linear-gradient(135deg, #e8f4ff 0%, #ffffff 60%);
+  }
+
+  html,body{height:100%;margin:0;font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;background:var(--bg);}
+  .stage{
+    max-width:var(--maxw);
+    margin:36px auto;
+    position:relative;
+    min-height:620px;
+    padding:24px;
+  }
+
+  /* Controls */
+  .controls{
+    display:flex;
+    gap:12px;
+    position:fixed;
+    right:20px;
+    top:20px;
+    z-index:50;
+  }
+  .btn{
+    background:var(--card);
+    border-radius:10px;
+    padding:10px 14px;
+    box-shadow:var(--shadow);
+    border:1px solid rgba(20,20,20,0.03);
+    cursor:pointer;
+    font-weight:600;
+    color:var(--dark);
+  }
+  .btn:active{transform:translateY(1px)}
+
+  /* Slide container */
+  .slides{
+    background:var(--g1);
+    border-radius:20px;
+    padding:var(--pad);
+    box-shadow:var(--shadow);
+    min-height:620px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .slide{
+    width:100%;
+    max-width:1000px;
+    height:560px;
+    background:var(--card);
+    border-radius:14px;
+    padding:28px;
+    box-sizing:border-box;
+    display:none;
+    gap:18px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.06);
+  }
+  .slide.active{display:flex;flex-direction:column}
+
+  /* Portada */
+  .cover{
+    background:linear-gradient(180deg, rgba(41,128,185,0.06), rgba(44,62,80,0.02));
+    border-radius:12px;
+    padding:28px;
+    display:flex;
+    gap:20px;
+    align-items:center;
+  }
+  .cover-left{flex:1}
+  .cover-right{width:360px;display:flex;align-items:center;justify-content:center;}
+
+  .title{
+    font-size:40px;
+    color:var(--dark);
+    margin:0 0 8px 0;
+    letter-spacing:-0.6px;
+  }
+  .subtitle{
+    color:var(--accent);
+    font-size:18px;
+    margin:0 0 18px 0;
+  }
+  .authors{
+    margin-top:18px;
+    font-size:16px;
+    color:var(--dark);
+  }
+  .meta{
+    color:var(--muted);
+    margin-top:8px;
+    font-size:13px;
+  }
+
+  /* Content slides */
+  .heading{
+    font-size:24px;color:var(--dark);margin:6px 0 12px 0;font-weight:700;
+  }
+  .cols{
+    display:flex;gap:24px;align-items:flex-start;
+  }
+  .col{flex:1}
+  ul{margin:8px 0 0 18px; color:var(--dark); line-height:1.6}
+  p{margin:6px 0;color:var(--dark)}
+  .small{color:var(--muted);font-size:13px}
+
+  /* Image style */
+  .img-card{
+    width:100%;
+    height:220px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    border:1px solid rgba(0,0,0,0.04);
+  }
+  .img-card img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* footer */
+  .footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  /* Pagination dots */
+  .dots{
+    position:absolute;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;gap:8px;
+  }
+  .dot{width:10px;height:10px;border-radius:50%;background:#dfe6e9;cursor:pointer}
+  .dot.active{background:var(--accent)}
+
+  /* Responsive */
+  @media (max-width:900px){
+    .cover-right{display:none}
+    .slides{padding:18px}
+    .slide{height:auto}
+    .img-card{height:160px}
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="controls">
+    <button class="btn" id="prev">← Anterior</button>
+    <button class="btn" id="next">Siguiente →</button>
+    <button class="btn" id="first">Portada</button>
+    <button class="btn" id="print">Imprimir / Exportar</button>
+    <button class="btn" id="fullscreen">Pantalla completa</button>
+  </div>
+
+  <div class="slides" id="slides">
+
+    <!-- Slide 0: Portada -->
+    <section class="slide active" data-index="0">
+      <div class="cover" style="width:100%">
+        <div class="cover-left">
+          <h1 class="title">Aprendizaje y Memoria</h1>
+          <div class="subtitle">Estudio — Conceptos clave y ejemplos</div>
+          <div class="authors">
+            <strong>Integrantes</strong><br>
+            Luis Patricio Alfaro Almaraz<br>
+            Mariana Enriquez Godina
+          </div>
+          <div class="meta">Grupo 557. • 2025</div>
+        </div>
+        <div class="cover-right">
+          <div style="width:320px;text-align:center">
+            <div class="img-card">
+              <!-- Imagen pública relacionada con cerebro/aprendizaje -->
+              <img src="img/download.jpeg" alt="cerebro ilustración">
+            </div>
+            <div class="small" style="margin-top:8px">Integradora E2</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>Aprendizaje y Memoria</div>
+        <div class="small">Presiona ← → o usa los botones para navegar</div>
+      </div>
+    </section>
+
+    <!-- Slide 1: Definición -->
+    <section class="slide" data-index="1">
+      <div class="heading">¿Qué es el aprendizaje?</div>
+      <div class="cols">
+        <div class="col">
+          <p><strong>Definición:</strong> El aprendizaje es un cambio relativamente permanente en el comportamiento que refleja la adquisición de conocimientos o habilidades a través de la experiencia.</p>
+          <ul>
+            <li>Difiere de los instintos: los instintos son patrones biológicos ligados a la supervivencia.</li>
+            <li>El aprendizaje implica modificación del comportamiento por experiencia.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="img-card">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1fc8a1b6f8c6a5c0e8f1b8d7b0b30d8f" alt="estudio">
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="small">Concepto básico</div>
+        <div class="small">Slide 2 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Niveles de aprendizaje -->
+    <section class="slide" data-index="2">
+      <div class="heading">Niveles de aprendizaje</div>
+      <div class="cols">
+        <div class="col">
+          <ul>
+            <li><strong>Habituación:</strong> Acostumbramiento a una rutina o estímulo.</li>
+            <li><strong>Asociativo:</strong> Aprendizaje que se obtiene a raíz de la asociación entre estímulos (positivo o negativo).</li>
+          </ul>
+        </div>
+        <div class="col">
+          <p class="small">Ejemplo: con el tiempo, un estudiante puede dejar de reaccionar ante un ruido de fondo (habituación). En cambio, puede asociar una acción con una consecuencia (asociativo).</p>
+          <div class="img-card">
+            <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a3b6d4d963b9f8c4d6a5f2b8a1c2d6e" alt="aprender">
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="small">Niveles</div>
+        <div class="small">Slide 3 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Condicionamiento (Pavlov) -->
+    <section class="slide" data-index="3">
+      <div class="heading">Condicionamiento clásico</div>
+      <div class="cols">
+        <div class="col">
+          <p><strong>Iván Pavlov</strong> (psicólogo ruso) descubrió el condicionamiento clásico experimentando con perros.</p>
+          <ul>
+            <li>Asoció un sonido con la presencia de comida.</li>
+            <li>Tras repetidas asociaciones, el sonido por sí solo provocaba salivación.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="img-card">
+            <img src="img/pavlov-scaled.webp" alt="experimento clásico">
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="small">Condicionamiento clásico</div>
+        <div class="small">Slide 4 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 4: Tipos de reforzadores -->
+    <section class="slide" data-index="4">
+      <div class="heading">Tipos de reforzadores</div>
+      <div class="cols">
+        <div class="col">
+          <ul>
+            <li><strong>Reforzador positivo:</strong> Estímulo agradable que aumenta la probabilidad de una conducta (e.g., comida, afecto).</li>
+            <li><strong>Reforzador negativo:</strong> Supresión de un estímulo aversivo que aumenta la respuesta (e.g., quitar una descarga eléctrica).</li>
+            <li><strong>Reforzador primario:</strong> Satisface necesidades biológicas (comida, agua).</li>
+            <li><strong>Reforzador secundario:</strong> Aprendido por asociación con reforzadores primarios (dinero, elogios).</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="img-card">
+            <img src="img/download (1).jpeg" alt="reforzadores">
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="small">Reforzadores</div>
+        <div class="small">Slide 5 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 5: Aprendizaje latente y por observación -->
+    <section class="slide" data-index="5">
+      <div class="heading">Aprendizaje latente y por observación</div>
+      <div class="cols">
+        <div class="col">
+          <p><strong>Aprendizaje latente:</strong> Ocurre pero no se manifiesta hasta que existe motivación para hacerlo.</p>
+          <p><strong>Aprendizaje por observación:</strong> Se aprende observando las conductas de otros (modelado).</p>
+        </div>
+        <div class="col">
+          <div class="img-card">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7c9b1d8b2f0a3e4a6b8c5d2e1f3a4b5c" alt="observación">
+          </div>
+          <p class="small" style="margin-top:8px">Ejemplo: Un alumno aprende observando el método de estudio de un compañero y lo aplica cuando lo necesita.</p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="small">Procesos de aprendizaje</div>
+        <div class="small">Slide 6 / 7</div>
+      </div>
+    </section>
+
+    <!-- Slide 6: Conclusión -->
+    <section class="slide" data-index="6">
+      <div class="heading">Conclusión</div>
+      <div class="cols">
+        <div class="col">
+          <p>El aprendizaje y la memoria son procesos interrelacionados que permiten a los individuos adaptar su comportamiento. Comprender los diferentes tipos de aprendizaje y reforzadores ayuda a diseñar estrategias educativas más efectivas.</p>
+          <ul>
+            <li>Usa reforzadores adecuados para facilitar el aprendizaje.</li>
+            <li>Incorpora modelado y práctica para promover transferencia.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="img-card">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=88f4f3b6f0a8e2d6b4c3e7a9f1b0c2d3" alt="conclusion">
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="small">¡FIN!</div>
+        <div class="small">Slide 7 / 7</div>
+      </div>
+    </section>
+
+    <!-- Dots -->
+    <div class="dots" id="dots"></div>
+  </div>
+</div>
+
+<!-- Script: navegación, atajos, print, fullscreen -->
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('dots');
+  let idx = 0;
+
+  // crear dots
+  slides.forEach((s,i)=>{
+    const d = document.createElement('div');
+    d.className='dot' + (i===0? ' active' : '');
+    d.dataset.index = i;
+    d.addEventListener('click', ()=> goTo(i));
+    dotsWrap.appendChild(d);
+  });
+
+  function update(){
+    slides.forEach(s => s.classList.remove('active'));
+    slides[idx].classList.add('active');
+    document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
+    document.querySelectorAll('.dot')[idx].classList.add('active');
+    // scroll to top of stage for small screens
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function next(){ idx = (idx+1) % slides.length; update(); }
+  function prev(){ idx = (idx-1 + slides.length) % slides.length; update(); }
+  function goTo(i){ idx = i; update(); }
+
+  document.getElementById('next').addEventListener('click', next);
+  document.getElementById('prev').addEventListener('click', prev);
+  document.getElementById('first').addEventListener('click', ()=>{ idx = 0; update(); });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowRight') next();
+    if(e.key === 'ArrowLeft') prev();
+    if(e.key === 'Home') { idx = 0; update();}
+    if(e.key === 'End') { idx = slides.length-1; update();}
+  });
+
+  // print/export: navegar por cada slide y abrir diálogo de imprimir
+  document.getElementById('print').addEventListener('click', ()=>{
+    // opcional: forzar todas las diapositivas a mostrarse una debajo de otra para impresión
+    const originalDisplay = slides.map(s => s.style.display);
+    slides.forEach(s => s.style.display = 'block');
+    window.print();
+    // restaurar (no siempre necesario)
+    setTimeout(()=> slides.forEach((s,i)=> s.style.display = originalDisplay[i] || (i===idx? 'flex':'none')), 500);
+  });
+
+  // fullscreen
+  document.getElementById('fullscreen').addEventListener('click', ()=>{
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen().catch(()=>{});
+    } else {
+      document.exitFullscreen().catch(()=>{});
+    }
+  });
+
+  // inicializar
+  update();
+})();
+</script>
+
+</body>
+</html>
